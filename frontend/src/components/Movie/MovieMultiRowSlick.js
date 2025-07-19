@@ -38,7 +38,7 @@ export default function MovieMultiRowSlick(props) {
 
   const settings = {
   infinite: true,           // ✅ Vòng lặp vô hạn
-  slidesToShow: 5,
+  slidesToShow: 4,
   slidesToScroll: 1,
   speed: 700,
   arrows: true,

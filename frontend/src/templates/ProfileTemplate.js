@@ -33,9 +33,14 @@ export const ProfileTemplate = (props) => { //path, exact, Component
   const selectedKeys = ['/users/profile', '/users/ordershistory']
   const selectedKey = (selectedKeys.indexOf(props.path) + 1).toString();
   const { profile } = useSelector(state => state.UserReducer)
-  let userLogin = {}
-  if (localStorage.getItem(USER_LOGIN)) {
-    userLogin = JSON.parse(localStorage.getItem(USER_LOGIN))
+  let userLogin = {};
+  try {
+    const userStr = localStorage.getItem(USER_LOGIN);
+    if (userStr && userStr !== "undefined") {
+      userLogin = JSON.parse(userStr);
+    }
+  } catch (e) {
+    userLogin = {};
   }
   const dispatch = useDispatch();
   useEffect(() => {
@@ -72,8 +77,8 @@ export const ProfileTemplate = (props) => { //path, exact, Component
         <Popover placement="bottomRight" title={profile.name} content={content} trigger="click">
           <Button className='rounded-full bg-slate-300 p-0 d-flex justify-center items-center w-full h-full' style={{ width: 40, height: 40 }}>
             {profile.avatar !== null ?
-              <div style={{ minWidth: '40px', minHeight: 40, width:40, height:40, backgroundSize: 'cover', borderRadius: '50%', backgroundImage: `url(${profile?.avatar})` }} />
-              : <Avatar size={40} style={{ fontSize: '28px', lineHeight: '32px' }} icon={profile?.name.substr(0,1)} />
+              <div style={{ minWidth: '40px', minHeight: 40, width: 40, height: 40, backgroundSize: 'cover', borderRadius: '50%', backgroundImage: `url(${profile?.avatar})` }} />
+              : <Avatar size={40} style={{ fontSize: '28px', lineHeight: '32px' }} icon={profile?.name.substr(0, 1)} />
             }
           </Button>
         </Popover>

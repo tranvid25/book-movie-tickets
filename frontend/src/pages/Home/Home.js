@@ -50,7 +50,7 @@ export default function Home(props) {
               hoverable
               className='d-flex my-3 w-full no-underline'
               style={{ height: 155, overflow: 'hidden' }}
-              bodyStyle={{ width: '100%', padding:'12px' }}
+              bodyStyle={{ width: '100%', padding: '12px' }}
               cover={<img alt={item.tieuDe} className='ant-card-cover-customs' src={item.hinhAnh} style={{ minWidth: 220, height: 155, objectFit: 'cover' }} />}
             >
               <div className='d-flex justify-between w-full'>
@@ -76,15 +76,19 @@ export default function Home(props) {
     <div>
       <HomeCarousel />
       <div className='container mx-auto my-8'>
-        <MovieMultiRowSlick arrMovie={arrMovie} />
-        <div className='grid grid-cols-3 gap-32'> 
+        <div style={{ width: '80%', margin: '0 auto' }}>
+          <MovieMultiRowSlick arrMovie={arrMovie} />
+        </div>
+        <div className='grid grid-cols-3 gap-32'>
         </div>
         <div className='my-12'>
-          <h1 className='text-center text-2xl'>CÁC TIN TỨC PHIM ẢNH MỚI NHẤT</h1>
-          <hr />
-          <div className='mt-3'>
-            {renderTinTuc()}
-            <Button className='text-red-500 text-right w-full' href='/news' type='link'>Xem thêm &gt;&gt;</Button>
+          <div style={{ width: '80%', margin: '0 auto' }}>
+            <h1 className='text-center text-2xl'>CÁC TIN TỨC PHIM ẢNH MỚI NHẤT</h1>
+            <hr />
+            <div className='mt-3'>
+              {renderTinTuc()}
+              <Button className='text-red-500 text-right w-full' href='/news' type='link'>Xem thêm &gt;&gt;</Button>
+            </div>
           </div>
         </div>
       </div>

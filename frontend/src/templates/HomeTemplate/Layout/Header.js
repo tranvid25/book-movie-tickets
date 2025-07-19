@@ -16,9 +16,14 @@ import NotificationBell from '../../../components/Notification/NotificationBell'
 export default function Header(props) {
     const dispatch = useDispatch()
     const { arrUser } = useSelector(state => state.UserReducer)
-    let userLogin = {}
-    if (localStorage.getItem(USER_LOGIN)) {
-        userLogin = JSON.parse(localStorage.getItem(USER_LOGIN))
+    let userLogin = {};
+    try {
+        const userStr = localStorage.getItem(USER_LOGIN);
+        if (userStr && userStr !== "undefined") {
+            userLogin = JSON.parse(userStr);
+        }
+    } catch (e) {
+        userLogin = {};
     }
 
     let usLogin = arrUser?.find(obj => obj.id === userLogin.id)

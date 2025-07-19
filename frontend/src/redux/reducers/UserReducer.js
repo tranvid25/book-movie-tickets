@@ -2,10 +2,14 @@ import { TOKEN, USER_LOGIN } from "../../util/settings/config";
 import { DANG_NHAP_ACTION, LAY_CHI_TIET_NGUOI_DUNG, LAY_DANH_SACH_NGUOI_DUNG, SET_THONG_TIN_DAT_VE, TIM_KIEM_NGUOI_DUNG } from "../constants"
 
 let user = {}
-if (localStorage.getItem(USER_LOGIN)) {
-  user = JSON.parse(localStorage.getItem(USER_LOGIN))
+try {
+  const userStr = localStorage.getItem(USER_LOGIN)
+  if (userStr && userStr !== "undefined") {
+    user = JSON.parse(userStr)
+  }
+} catch (e) {
+  user = {}
 }
-
 
 
 const initialState = {
@@ -31,11 +35,13 @@ export const UserReducer = (state = initialState, action) => {
 
     case DANG_NHAP_ACTION:
       const { thongTinDangNhap } = action;
-      localStorage.setItem(USER_LOGIN, JSON.stringify(thongTinDangNhap.content.content));
-      localStorage.setItem(TOKEN, thongTinDangNhap.content.accessToken);
-      // Lưu thêm userId để chat realtime hoạt động đúng
-      localStorage.setItem('userId', thongTinDangNhap.content.content.id);
-      return { ...state, userLogin: thongTinDangNhap.content.content }
+      const userContent = thongTinDangNhap?.user;
+      localStorage.setItem(USER_LOGIN, JSON.stringify(userContent || {}));
+      localStorage.setItem(TOKEN, thongTinDangNhap?.accessToken || '');
+      if (userContent && userContent.id) {
+        localStorage.setItem('userId', userContent.id);
+      }
+      return { ...state, userLogin: userContent || {} }
 
     case LAY_DANH_SACH_NGUOI_DUNG:
       state.arrUser = action.arrUser;

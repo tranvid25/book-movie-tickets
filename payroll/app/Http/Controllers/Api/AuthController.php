@@ -75,14 +75,12 @@ class AuthController extends Controller
         $token->save();
         return response()->json([
             'status' => 200,
-            'content' => [
-                'content' => $user,
-                'accessToken' => $tokenResult->accessToken,
-                'token_type' => 'Bearer',
-                'expires_at' => Carbon::parse(
-                    $tokenResult->token->expires_at
-                )->toDateTimeString()
-            ]
+            'user' => $user,
+            'accessToken' => $tokenResult->accessToken,
+            'token_type' => 'Bearer',
+            'expires_at' => Carbon::parse(
+                $tokenResult->token->expires_at
+            )->toDateTimeString()
         ], 200);
     }
     public function logout(Request $request)

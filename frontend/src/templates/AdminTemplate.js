@@ -38,9 +38,14 @@ export const AdminTemplate = (props) => { //path, exact, Component
     dispatch(layDanhSachNguoiDungAction())
   }, [dispatch])
 
-  let userLogin = {}
-  if (localStorage.getItem(USER_LOGIN)) {
-    userLogin = JSON.parse(localStorage.getItem(USER_LOGIN))
+  let userLogin = {};
+  try {
+    const userStr = localStorage.getItem(USER_LOGIN);
+    if (userStr && userStr !== "undefined") {
+      userLogin = JSON.parse(userStr);
+    }
+  } catch (e) {
+    userLogin = {};
   }
 
   console.log('AdminTemplate - userLogin:', userLogin);

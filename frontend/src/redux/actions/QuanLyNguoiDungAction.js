@@ -9,10 +9,13 @@ export const dangNhapAction = (thongTinDangNhap) => {
         try {
             dispatch(displayLoadingAction)
             const result = await quanLyNguoiDungService.dangNhap(thongTinDangNhap);
-            if (result.data.status === 200) {
+            console.log('Đăng nhập - result.data:', result?.data);
+            if (result && result.data && result.data.status === 200) {
+                console.log('Lưu accessToken:', result.data.accessToken);
+                console.log('Lưu user:', result.data.user);
                 dispatch({
                     type: DANG_NHAP_ACTION,
-                    thongTinDangNhap: result.data.content
+                    thongTinDangNhap: result.data
                 })
                 history.push('home');
             } else {
@@ -22,7 +25,7 @@ export const dangNhapAction = (thongTinDangNhap) => {
             await dispatch(hideLoadingAction)
         } catch (error) {
             console.log(error)
-            alert(error.response.data.message)
+            alert(error?.response?.data?.message || "Đăng nhập thất bại!")
             dispatch(hideLoadingAction)
         }
     }
