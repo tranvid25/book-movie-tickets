@@ -69,7 +69,7 @@ export default function Search(props) {
             </Modal>
           </div>
           <article className="text-left w-full">
-            <h2>{phim.tenPhim}</h2>
+            <h2 style={{ color: '#a78bfa' }}>{phim.tenPhim}</h2> {/* tím nhạt */}
             <h4>{phim.moTa}</h4>
           </article>
           <img src={phim.hinhAnh} alt={phim.tenPhim} className='w-full object-cover' />

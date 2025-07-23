@@ -6,7 +6,7 @@ try {
   const userStr = localStorage.getItem(USER_LOGIN)
   if (userStr && userStr !== "undefined") {
     user = JSON.parse(userStr)
-  }
+}
 } catch (e) {
   user = {}
 }

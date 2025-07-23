@@ -77,17 +77,17 @@ export default function Home(props) {
       <HomeCarousel />
       <div className='container mx-auto my-8'>
         <div style={{ width: '80%', margin: '0 auto' }}>
-          <MovieMultiRowSlick arrMovie={arrMovie} />
+        <MovieMultiRowSlick arrMovie={arrMovie} />
         </div>
-        <div className='grid grid-cols-3 gap-32'>
+        <div className='grid grid-cols-3 gap-32'> 
         </div>
         <div className='my-12'>
           <div style={{ width: '80%', margin: '0 auto' }}>
-            <h1 className='text-center text-2xl'>CÁC TIN TỨC PHIM ẢNH MỚI NHẤT</h1>
-            <hr />
-            <div className='mt-3'>
-              {renderTinTuc()}
-              <Button className='text-red-500 text-right w-full' href='/news' type='link'>Xem thêm &gt;&gt;</Button>
+          <h1 className='text-center text-2xl'>CÁC TIN TỨC PHIM ẢNH MỚI NHẤT</h1>
+          <hr />
+          <div className='mt-3'>
+            {renderTinTuc()}
+            <Button className='text-red-500 text-right w-full' href='/news' type='link'>Xem thêm &gt;&gt;</Button>
             </div>
           </div>
         </div>

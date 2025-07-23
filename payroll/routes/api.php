@@ -75,7 +75,7 @@ use Illuminate\Support\Facades\Route;
         Route::get('laydanhsachdonhang', [OrderDetailController::class, 'index']);
         Route::post('laydanhsachdonhang', [OrderDetailController::class, 'store']);
         Route::get('laychitietdonhang/{id}', [OrderDetailController::class, 'show']);
-        Route::get('laydanhsachdonhang/{id}', [OrderDetailController::class, 'showByUser']);
+
         Route::get('doanhthu/{year}', [OrderDetailController::class, 'doanhthu']);
         //SEAT
         Route::get('laydanhsachghe', [SeatController::class, 'index']);
@@ -131,6 +131,8 @@ use Illuminate\Support\Facades\Route;
         //Notification
         Route::get('notification/unread',[PromotionNotificationController::class,'unread']);
         Route::post('notification/create',[PromotionNotificationController::class,'store']);// admin tạo
-        Route::post('notification/{id}/read',[PromotionNotificationController::class,'markAsRead']);
+        Route::put('notification/{id}/read',[PromotionNotificationController::class,'markAsRead']);
+        //Order
+        Route::get('laydanhsachdonhang/{id}', [OrderDetailController::class, 'showByUser']);
     });
 });

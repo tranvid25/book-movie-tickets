@@ -125,7 +125,7 @@ export default function Header(props) {
                                         >
                                             <img src={phim.hinhAnh} alt={phim.tenPhim} className="w-10 h-14 object-cover rounded mr-2" />
                                             <div>
-                                                <div className="font-semibold">{phim.tenPhim}</div>
+                                                <div className="font-semibold" style={{ color: '#a78bfa' }}>{phim.tenPhim}</div>
                                                 <div className="text-xs text-gray-500">{phim.moTa?.slice(0, 40)}...</div>
                                             </div>
                                         </div>

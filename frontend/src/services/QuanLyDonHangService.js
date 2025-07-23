@@ -17,7 +17,7 @@ export class QuanLyDonHangService extends baseService {
 
 
     layDonHangTheoUser = (id ) => {
-        return this.get(`/api/laydanhsachdonhang/${id}`);
+        return this.get(`/api/auth/laydanhsachdonhang/${id}`);
     }
 
 
